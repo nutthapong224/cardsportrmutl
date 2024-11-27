@@ -164,7 +164,7 @@ const Searchesport = () => {
               {filteredData.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>
-                    {row.fname} {row.lname}
+                  {rowData.title}    {row.fname} {row.lname}
                   </TableCell>
                   <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>{row.campus}</TableCell>
                   <TableCell>

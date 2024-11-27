@@ -192,7 +192,7 @@ const Playerhooptakraw = () => {
                 }}
               >
                 <span>ชื่อสกุล : </span>
-                {rowData.fname} {rowData.lname}
+                {rowData.title}    {rowData.fname} {rowData.lname}
               </Typography>
               <Typography
                 variant="body2"

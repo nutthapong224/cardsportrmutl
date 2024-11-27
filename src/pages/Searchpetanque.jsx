@@ -31,7 +31,7 @@ const Searchpetanque = () => {
 
   useEffect(() => {
     const fetchCSVData = async () => {
-      const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_TABLETENIS; // Ensure correct URL
+      const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_PETANQUE; // Ensure correct URL
       try {
         const response = await fetch(url);
         const csvText = await response.text();
@@ -71,6 +71,7 @@ const Searchpetanque = () => {
     const lnameMatch = row.lname?.toLowerCase().includes(lnameSearch.toLowerCase());
     const campusMatch = selectedCampus ? row.campus === selectedCampus : true;
 
+   
     return fnameMatch && lnameMatch && campusMatch;
   });
 
