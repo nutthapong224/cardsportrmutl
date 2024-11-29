@@ -4,7 +4,8 @@ import Papa from "papaparse";
 import { Box, Card, CardContent, Typography, CardMedia, Button  } from "@mui/material";
 import iconimage from "../assets/icon.jpg";
 import backcard from "../assets/backcard.png";
-import iconimages from "../assets/icons.png";
+import iconimages from "../assets/icons.png"; 
+import b from "../assets/b.png"
 import c from "../assets/c.png";
 import logo from "../assets/logos.png";
 import qrcode from "../assets/qrcodesport.png";
@@ -244,7 +245,7 @@ const Director = () => {
                 <CardMedia
                   component="img"
                   height="165"
-                  image={c}
+                  image={b}
                   alt="Second Image"
                   sx={{ width: "48%" }}
                 />
