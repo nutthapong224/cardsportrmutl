@@ -28,7 +28,7 @@ const Home = () => {
         textAlign: "center",
         padding: { xs: "20px", md: "40px" },
         fontFamily: "'Kanit', sans-serif",
-        marginTop: { xs: "-80px", sm: "-90px", md: "-100px" },
+        marginTop: { xs: "-20px", sm: "-80px", md: "-100px" },
       }}
     >
       <Typography
@@ -36,7 +36,8 @@ const Home = () => {
         gutterBottom
         sx={{
           fontSize: { xs: "1.5rem", sm: "2rem" },
-          fontFamily: "'Kanit', sans-serif",
+          fontFamily: "'Kanit', sans-serif", 
+
         }}
       >
         ระบบค้นหาข้อมูลผู้คุม/นักกีฬา
