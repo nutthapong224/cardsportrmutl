@@ -204,8 +204,8 @@ const Playerpetanque = () => {
                 }}
               >
                 <span>ประเภทกีฬา: </span>
-                {/* {rowData.sporttype} */}
-                เปตอง
+             {rowData.sporttype} 
+                
               </Typography>
               <Typography
                 variant="body2"

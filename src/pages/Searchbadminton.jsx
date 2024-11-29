@@ -70,7 +70,10 @@ const Searchesport = () => {
     const fnameMatch = row.fname?.toLowerCase().includes(fnameSearch.toLowerCase());
     const lnameMatch = row.lname?.toLowerCase().includes(lnameSearch.toLowerCase());
     const campusMatch = selectedCampus ? row.campus === selectedCampus : true;
-
+  console.log(row.fname); 
+  console.log(row.lname);
+  
+  
   
     return fnameMatch && lnameMatch && campusMatch;
   });
@@ -164,7 +167,7 @@ const Searchesport = () => {
               {filteredData.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>
-                  {rowData.title}    {row.fname} {row.lname}
+                  {row.title}    {row.fname} {row.lname}
                   </TableCell>
                   <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>{row.campus}</TableCell>
                   <TableCell>

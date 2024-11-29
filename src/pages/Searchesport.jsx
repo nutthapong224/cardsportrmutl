@@ -70,7 +70,10 @@ const Searchesport = () => {
     const fnameMatch = row.fname?.toLowerCase().includes(fnameSearch.toLowerCase());
     const lnameMatch = row.lname?.toLowerCase().includes(lnameSearch.toLowerCase());
     const campusMatch = selectedCampus ? row.campus === selectedCampus : true;
-
+  console.log(row.fname); 
+  console.log(row.lname);
+  
+  
     return fnameMatch && lnameMatch && campusMatch;
   });
 
