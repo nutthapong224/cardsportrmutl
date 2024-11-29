@@ -31,7 +31,7 @@ const Searchesport = () => {
 
   useEffect(() => {
     const fetchCSVData = async () => {
-      const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_ESPORT; // Ensure correct URL
+      const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_ORGANIZATIONS; // Ensure correct URL
       try {
         const response = await fetch(url);
         const csvText = await response.text();
@@ -54,7 +54,7 @@ const Searchesport = () => {
   const uniqueCampuses = [...new Set(data.map((row) => row.campus))];
 
   const handleViewDetails = (rowId) => {
-    navigate(`/playeresport/${rowId}`);
+    navigate(`/studentorganization/${rowId}`);
   };
 
   const handleSearchClick = () => {
@@ -87,7 +87,7 @@ const Searchesport = () => {
         gutterBottom
         sx={{ fontFamily: "'Kanit', sans-serif" }}
       >
-        ระบบค้นหานักกีฬาE-Sport
+        ระบบค้นหานักองค์การนักศึกษา
       </Typography>
 
       <Grid container spacing={2} sx={{ mb: 2 }}>

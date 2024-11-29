@@ -20,18 +20,19 @@ import {
   FormControl,
 } from "@mui/material";
 
-const Searchesport = () => {
+const Searchdirector = () => {
   const [data, setData] = useState([]);
   const [fnameSearch, setFnameSearch] = useState("");
   const [lnameSearch, setLnameSearch] = useState("");
   const [selectedCampus, setSelectedCampus] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Error message state
   const [search, setSearch] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(""); // State for error message
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCSVData = async () => {
-      const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_ESPORT; // Ensure correct URL
+      const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_DIRECTOR;
+
       try {
         const response = await fetch(url);
         const csvText = await response.text();
@@ -50,11 +51,10 @@ const Searchesport = () => {
     fetchCSVData();
   }, []);
 
-  // Extract unique campuses for the dropdown
   const uniqueCampuses = [...new Set(data.map((row) => row.campus))];
 
-  const handleViewDetails = (rowId) => {
-    navigate(`/playeresport/${rowId}`);
+  const handleViewDetails = (fname, lname) => {
+    navigate(`/director/${fname}/${lname}`);
   };
 
   const handleSearchClick = () => {
@@ -70,9 +70,10 @@ const Searchesport = () => {
     const fnameMatch = row.fname?.toLowerCase().includes(fnameSearch.toLowerCase());
     const lnameMatch = row.lname?.toLowerCase().includes(lnameSearch.toLowerCase());
     const campusMatch = selectedCampus ? row.campus === selectedCampus : true;
-
-  
-  
+   console.log(row.fname); 
+   console.log(row.lname);
+   
+   
     return fnameMatch && lnameMatch && campusMatch;
   });
 
@@ -85,9 +86,12 @@ const Searchesport = () => {
         component="h1"
         align="center"
         gutterBottom
-        sx={{ fontFamily: "'Kanit', sans-serif" }}
+        sx={{
+          fontFamily: "'Kanit', sans-serif",
+          fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+        }}
       >
-        ระบบค้นหานักกีฬาE-Sport
+        ระบบค้นหากรรมการผู้ตัดสิน
       </Typography>
 
       <Grid container spacing={2} sx={{ mb: 2 }}>
@@ -96,6 +100,7 @@ const Searchesport = () => {
             label="กรุณากรอกชื่อ"
             variant="outlined"
             fullWidth
+            required
             value={fnameSearch}
             onChange={(e) => setFnameSearch(e.target.value)}
             sx={{ fontFamily: "'Kanit', sans-serif" }}
@@ -106,6 +111,7 @@ const Searchesport = () => {
             label="กรุณากรอกนามสกุล"
             variant="outlined"
             fullWidth
+            required
             value={lnameSearch}
             onChange={(e) => setLnameSearch(e.target.value)}
             sx={{ fontFamily: "'Kanit', sans-serif" }}
@@ -128,8 +134,8 @@ const Searchesport = () => {
             </Select>
           </FormControl>
         </Grid>
-      </Grid>
-
+        
+      </Grid> 
       <Button
         variant="contained"
         color="primary"
@@ -162,17 +168,15 @@ const Searchesport = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredData.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>
-                   {row.title} {row.fname} {row.lname}
-                  </TableCell>
+              {filteredData.slice(0, 1).map((row) => (
+                <TableRow key={row.idimport}>
+                  <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>{row.title}{row.fname} {row.lname}</TableCell>
                   <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>{row.campus}</TableCell>
                   <TableCell>
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => handleViewDetails(row.studentid)}
+                      onClick={() => handleViewDetails(row.fname, row.lname)}
                       sx={{ fontFamily: "'Kanit', sans-serif" }}
                     >
                       แสดงข้อมูล
@@ -198,4 +202,4 @@ const Searchesport = () => {
   );
 };
 
-export default Searchesport;
+export default Searchdirector;

@@ -10,8 +10,8 @@ const Home = () => {
   const items = [
     { label: "ผู้คุมทีม", path: "/coach", icon: coach, description: "เจ้าหน้าที่ผู้คุมนักกีฬา" },
     { label: "ฟุตซอล", path: "/player", icon: player, description: "นักศึกษาที่ลงแข่งขัน" },  
-    // { label: "ผู้คุมทีม", path: "/coach", icon: coach, description: "เจ้าหน้าที่ผู้คุมนักกีฬา" },
-    // { label: "ฟุตซอล", path: "/player", icon: player, description: "นักศึกษาที่ลงแข่งขัน" }, 
+    { label: "องค์การนักศึกษา", path: "/studentorganization", icon: coach, description: "องค์การนักศึกษา" },
+    { label: "กรรมการตัดสิน", path: "/director", icon: player, description: "กรรมการตัดสิน" }, 
 
   ];
 

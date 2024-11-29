@@ -24,7 +24,13 @@ import Playerpetanque from "./pages/Playerpetanque.jsx";
 import Playertakraw from "./pages/Playertakraw.jsx"; 
 import Playertabletenis from "./pages/Playertabletenis.jsx"; 
 import Playervolleyball from "./pages/Playervolleyball.jsx";
-import NotFoundPage from "./pages/NotFoundPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx"; 
+import Searchstudentorganization from "./pages/Searchstudentorganization.jsx"; 
+import Searchdirector from "./pages/Searchdirector.jsx"; 
+import Director from "./pages/Director.jsx"; 
+import Organizations from "./pages/Organizations.jsx"; 
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -35,13 +41,15 @@ function App() {
           <Route path="/playerbadminton/:rowIndex" element={<Playerbadminton />} />
           <Route path="/playerbasketball/:rowIndex" element={<Playerbasketball />} />
           <Route path="/playeresport/:rowIndex" element={<Playeresport />} />
-          <Route path="/playerfutsal/:rowIndex" element={<Playerfutsal />} />
+          <Route path="/playerfutsal/:rowIndex" element={<Playerfutsal />} /> 
           <Route path="/playerhooptakraw/:rowIndex" element={<Playerhooptakraw />} />
           <Route path="/playerpetanque/:rowIndex" element={<Playerpetanque />} />
           <Route path="/playertakraw/:rowIndex" element={<Playertakraw />} />
           <Route path="/playertabletenis/:rowIndex" element={<Playertabletenis/>} />
           <Route path="/playervolleyball/:rowIndex" element={<Playervolleyball />} />
-          <Route path="/coach/:fname/:lname" element={<Coach />} />
+          <Route path="/coach/:fname/:lname" element={<Coach />} /> 
+          <Route path="/director/:fname/:lname" element={<Director />} />  
+          <Route path="/studentorganization/:rowIndex" element={<Organizations />} /> 
           <Route path="/searhfootball" element={<Searchefootball />} />  
           <Route path="/searhvolleyball" element={<Searchvolleyball />} />   
           <Route path="/searhfutsal" element={<Searchfutsal />} />   
@@ -53,7 +61,9 @@ function App() {
           <Route path="/searhtakraw" element={<Searchtakraw />} />  
           <Route path="/searhbadminton" element={<Searchbadminton />} /> 
           <Route path="/" element={<Home />} /> 
-          <Route path="/coach" element={<Searchcoach />} />  
+          <Route path="/coach" element={<Searchcoach />} />   
+          <Route path="/studentorganization" element={<Searchstudentorganization />} />   
+          <Route path="/director" element={<Searchdirector />} />  
           <Route path="/player" element={<Sporttype />} />  
           <Route path="*" element={<NotFoundPage />} /> 
         </Routes>
