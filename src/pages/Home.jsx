@@ -3,15 +3,17 @@ import { ImageListItem, Typography, Box } from "@mui/material";
 import Grid2 from "@mui/material/Grid2";
 import { useNavigate } from "react-router-dom";
 import player from "../assets/player.png";
-import coach from "../assets/coach.png";
+import coach from "../assets/coach.png"; 
+import organization from "../assets/organization.png" 
+import director from "../assets/director.png"
 
 const Home = () => {
   const navigate = useNavigate(); 
   const items = [
     { label: "ผู้คุมทีม", path: "/coach", icon: coach, description: "เจ้าหน้าที่ผู้คุมนักกีฬา" },
     { label: "ฟุตซอล", path: "/player", icon: player, description: "นักศึกษาที่ลงแข่งขัน" },  
-    { label: "องค์การนักศึกษา", path: "/studentorganization", icon: coach, description: "องค์การนักศึกษา" },
-    { label: "กรรมการตัดสิน", path: "/director", icon: player, description: "กรรมการตัดสิน" }, 
+    { label: "องค์การนักศึกษา", path: "/studentorganization", icon: organization, description: "องค์การนักศึกษา" },
+    { label: "กรรมการตัดสิน", path: "/director", icon: director, description: "กรรมการตัดสิน" }, 
 
   ];
 
