@@ -72,6 +72,7 @@ const Searchfutsal = () => {
     const lnameMatch = row.lname?.toLowerCase().includes(lnameSearch.toLowerCase());
     const campusMatch = selectedCampus ? row.campus === selectedCampus : true;
 
+  
     return fnameMatch && lnameMatch && campusMatch;
   });
 

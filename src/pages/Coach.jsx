@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Papa from "papaparse";
-import { Box, Card, CardContent, Typography, CardMedia, Button  } from "@mui/material";
-import iconimage from "../assets/icon.jpg";
+import { Box, Card, CardContent, Typography, CardMedia ,Button} from "@mui/material"; 
 import backcard from "../assets/backcard.png";
 import iconimages from "../assets/icons.png";
-import c from "../assets/c.png";
+import d from "../assets/d.png";
 import logo from "../assets/logos.png";
 import qrcode from "../assets/qrcodesport.png";
 import backgroundimg from "../assets/background3.png";
 
-const Playercardc = () => {
-  const { fname, lname } = useParams();
+const Playerbadminton = () => {
+  const { rowIndex } = useParams(); // Extract the rowIndex parameter from the URL
   const [rowData, setRowData] = useState(null);
   const [flip, setFlip] = useState(false); // State to track flip
-
   useEffect(() => {
     const fetchCSVData = async () => {
       const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_COACH;
@@ -28,15 +26,15 @@ const Playercardc = () => {
           header: true,
           complete: (result) => {
             const data = result.data;
-            // Find the row with matching fname and lname
-            const row = data.find(
-              (item) => item.fname === fname && item.lname === lname
-            );
+    
+
+            // Find the row with a matching id
+            const row = data.find((item) => item.studentid === rowIndex);
 
             if (row) {
               setRowData(row);
             } else {
-              console.error(`No row found for ${fname} ${lname}`);
+              console.error(`No row found with id ${rowIndex}`);
             }
           },
         });
@@ -46,9 +44,8 @@ const Playercardc = () => {
     };
 
     fetchCSVData();
-  }, [fname, lname]);
+  }, [rowIndex]);
 
-  // Show loading state while data is being fetched
   if (!rowData) {
     return <div style={{ fontFamily: "'Kanit', sans-serif" }}>กำลังโหลดข้อมูล...</div>;
   }
@@ -62,7 +59,6 @@ const Playercardc = () => {
   };
 
   return (
-    
     <div>
       <Card 
       style={{
@@ -196,7 +192,7 @@ const Playercardc = () => {
                 }}
               >
                 <span>ชื่อสกุล : </span>
-                {rowData.fname} {rowData.lname}
+                {rowData.title}  {rowData.fname} {rowData.lname}
               </Typography>
               <Typography
                 variant="body2"
@@ -208,7 +204,7 @@ const Playercardc = () => {
                 }}
               >
                 <span>ประเภทกีฬา: </span>
-                {rowData.sporttype}
+                {rowData.sporttype} {rowData.sex}
               </Typography>
               <Typography
                 variant="body2"
@@ -244,7 +240,7 @@ const Playercardc = () => {
                 <CardMedia
                   component="img"
                   height="165"
-                  image={c}
+                  image={d}
                   alt="Second Image"
                   sx={{ width: "48%" }}
                 />
@@ -340,4 +336,4 @@ const Playercardc = () => {
   );
 };
 
-export default Playercardc;
+export default Playerbadminton;

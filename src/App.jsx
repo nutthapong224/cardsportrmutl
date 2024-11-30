@@ -47,7 +47,7 @@ function App() {
           <Route path="/playertakraw/:rowIndex" element={<Playertakraw />} />
           <Route path="/playertabletenis/:rowIndex" element={<Playertabletenis/>} />
           <Route path="/playervolleyball/:rowIndex" element={<Playervolleyball />} />
-          <Route path="/coach/:fname/:lname" element={<Coach />} /> 
+          <Route path="/coach/:rowIndex" element={<Coach />} /> 
           <Route path="/director/:fname/:lname" element={<Director />} />  
           <Route path="/studentorganization/:rowIndex" element={<Organizations />} /> 
           <Route path="/searhfootball" element={<Searchefootball />} />  

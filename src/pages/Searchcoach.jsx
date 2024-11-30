@@ -20,19 +20,18 @@ import {
   FormControl,
 } from "@mui/material";
 
-const Searchcoach = () => {
+const Searchesport = () => {
   const [data, setData] = useState([]);
   const [fnameSearch, setFnameSearch] = useState("");
   const [lnameSearch, setLnameSearch] = useState("");
   const [selectedCampus, setSelectedCampus] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Error message state
   const [search, setSearch] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(""); // State for error message
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCSVData = async () => {
-      const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_COACH;
-
+      const url = import.meta.env.VITE_GOOGLE_SHEETS_CSV_COACH; // Ensure correct URL
       try {
         const response = await fetch(url);
         const csvText = await response.text();
@@ -51,10 +50,11 @@ const Searchcoach = () => {
     fetchCSVData();
   }, []);
 
+  // Extract unique campuses for the dropdown
   const uniqueCampuses = [...new Set(data.map((row) => row.campus))];
 
-  const handleViewDetails = (fname, lname) => {
-    navigate(`/coach/${fname}/${lname}`);
+  const handleViewDetails = (rowId) => {
+    navigate(`/coach/${rowId}`);
   };
 
   const handleSearchClick = () => {
@@ -70,10 +70,9 @@ const Searchcoach = () => {
     const fnameMatch = row.fname?.toLowerCase().includes(fnameSearch.toLowerCase());
     const lnameMatch = row.lname?.toLowerCase().includes(lnameSearch.toLowerCase());
     const campusMatch = selectedCampus ? row.campus === selectedCampus : true;
-   console.log(row.fname); 
-   console.log(row.lname);
-   
-   
+
+  
+  
     return fnameMatch && lnameMatch && campusMatch;
   });
 
@@ -86,12 +85,9 @@ const Searchcoach = () => {
         component="h1"
         align="center"
         gutterBottom
-        sx={{
-          fontFamily: "'Kanit', sans-serif",
-          fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-        }}
+        sx={{ fontFamily: "'Kanit', sans-serif" }}
       >
-        ระบบค้นหาผู้คุมนักกีฬา
+        ระบบค้นหาผู้คุมทีม
       </Typography>
 
       <Grid container spacing={2} sx={{ mb: 2 }}>
@@ -100,7 +96,6 @@ const Searchcoach = () => {
             label="กรุณากรอกชื่อ"
             variant="outlined"
             fullWidth
-            required
             value={fnameSearch}
             onChange={(e) => setFnameSearch(e.target.value)}
             sx={{ fontFamily: "'Kanit', sans-serif" }}
@@ -111,7 +106,6 @@ const Searchcoach = () => {
             label="กรุณากรอกนามสกุล"
             variant="outlined"
             fullWidth
-            required
             value={lnameSearch}
             onChange={(e) => setLnameSearch(e.target.value)}
             sx={{ fontFamily: "'Kanit', sans-serif" }}
@@ -134,8 +128,8 @@ const Searchcoach = () => {
             </Select>
           </FormControl>
         </Grid>
-        
-      </Grid> 
+      </Grid>
+
       <Button
         variant="contained"
         color="primary"
@@ -163,20 +157,22 @@ const Searchcoach = () => {
             <TableHead>
               <TableRow>
                 <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>ชื่อ-นามสกุล</TableCell>
-                <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>วิทยาเขต</TableCell>
+                <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>ประเภทกีฬาที่คุม</TableCell>
                 <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>แสดงข้อมูล</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredData.slice(0, 1).map((row) => (
-                <TableRow key={row.idimport}>
-                  <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>{row.title}{row.fname} {row.lname}</TableCell>
-                  <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>{row.campus}</TableCell>
+              {filteredData.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>
+                   {row.title} {row.fname} {row.lname}
+                  </TableCell>
+                  <TableCell sx={{ fontFamily: "'Kanit', sans-serif" }}>{row.sporttype} {row.sex} </TableCell>
                   <TableCell>
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => handleViewDetails(row.fname, row.lname)}
+                      onClick={() => handleViewDetails(row.studentid)}
                       sx={{ fontFamily: "'Kanit', sans-serif" }}
                     >
                       แสดงข้อมูล
@@ -202,4 +198,4 @@ const Searchcoach = () => {
   );
 };
 
-export default Searchcoach;
+export default Searchesport;
